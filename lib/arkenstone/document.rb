@@ -236,7 +236,7 @@ module Arkenstone
       def build(options)
         raise NoParameterError.new, NoParameterError.default_message if options.nil? || options.empty?
         document = self.new
-        document.attributes = options.select do |key, value|
+        document.attributes = Hash(options).select do |key, _value|
           document.respond_to? :"#{key}="
         end
         return document
