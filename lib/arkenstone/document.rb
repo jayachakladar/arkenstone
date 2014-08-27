@@ -234,6 +234,7 @@ module Arkenstone
 
       ### Constructs a new instance with the provided attributes.
       def build(options)
+        raise NoParameterError.new, NoParameterError.default_message if options.nil?
         document = self.new
         document.attributes = options.select do |key, value|
           document.respond_to? :"#{key}="
